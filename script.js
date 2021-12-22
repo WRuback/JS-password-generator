@@ -12,29 +12,26 @@ function writePassword() {
 
 
 function generatePassword(){
-  var passwordCharacters="";
-  var passwordLength=0;
-  var correct = false;
+  let lowercase = "abcdefghijklmnopqrstuvwxyz";
+  let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let numbers = "1234567890";
+  let special = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+  
+  let passwordLength=0;
+  let passwordCharacters="";
+  let output = "";
 
-  while (correct === false){
+  while (true){
     passwordLength = parseInt(prompt("How long do you want you password? (8 to 128)"));
     if(passwordLength >= 8 && passwordLength <= 128){
-      correct = true;
+      break;
     }
     else{
       alert("Please enter a number between 8 and 128.");
     }
   }
 
-  var lowercase = "abcdefghijklmnopqrstuvwxyz";
-  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var numbers = "1234567890";
-  var special = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-  var passwordCharacters = "";
-  var output = "";
-  correct = false;
-
-  while (correct === false){
+  while (true){
     if (confirm("Would you like to add Uppercase characters?")){
       passwordCharacters += uppercase;
     }
@@ -44,11 +41,11 @@ function generatePassword(){
     if (confirm("Would you like to add Numbers?")){
       passwordCharacters += numbers;
     }
-    if (confirm("Would you like to add special characters?")){
+    if (confirm("Would you like to add Special characters?")){
       passwordCharacters += special;
     }
     if(passwordCharacters !== ""){
-      correct = true;
+      break;
     }
     else{
       alert("Please select at least one kind of character to be in the password.")
