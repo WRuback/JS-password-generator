@@ -26,8 +26,35 @@ function generatePassword(){
     }
   }
 
-  passwordCharacters += ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
+  var lowercase = "abcdefghijklmnopqrstuvwxyz";
+  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numbers = "1234567890";
+  var special = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+  var passwordCharacters = "";
   var output = "";
+  correct = false;
+
+  while (correct === false){
+    if (confirm("Would you like to add Uppercase characters?")){
+      passwordCharacters += uppercase;
+    }
+    if (confirm("Would you like to add Lowercase characters?")){
+      passwordCharacters += lowercase;
+    }
+    if (confirm("Would you like to add Numbers?")){
+      passwordCharacters += numbers;
+    }
+    if (confirm("Would you like to add special characters?")){
+      passwordCharacters += special;
+    }
+    if(passwordCharacters !== ""){
+      correct = true;
+    }
+    else{
+      alert("Please select at least one kind of character to be in the password.")
+    }
+  }
+
   for (let i=0; i<passwordLength; i++) {
     let randLetter = Math.floor(Math.random() * passwordCharacters.length);
     output += passwordCharacters[randLetter];
